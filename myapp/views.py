@@ -149,6 +149,58 @@ def bank_details(request):
         return HttpResponse("submit data")
 
 
+def get_student_data(request):
+    if request.method == "GET":
+        # data = StudentData.objects.all()
+        data = StudentData.objects.filter(name="bharat")
+        print(data)
+        for d in data:
+            print(d.__dict__)
+        return HttpResponse("done")
+
+# def get_bank_details(request):
+#     if request.method == 'GET':
+#         data = BankDetails.objects.all()
+#         data = BankDetails.objects.filter(active=True)
+#
+#         print(data)
+#         for b in data:
+#             print(b.__dict__)
+#         return HttpResponse("done")
+
+def get_student_status(request):
+    if request.method == 'GET':
+        data = StudentStatus.objects.all()
+        dta = []
+        for i in data:
+            d = {}
+            d['id'] = i.id
+            d['name'] = i.name
+            d['present'] = i.present
+            d['detained'] = i.detained
+            dta.append(d)
+
+
+        print(dta)
+
+        return render(request, 'show_student_data.html', {"data": dta} )
+
+def get_bank_details(request):
+    if request.method == 'GET':
+        data = BankDetails.objects.all()
+        detail = []
+        for i in data:
+            d = {}
+            d['id'] = i.id
+            d['name'] = i.name
+            d['age'] = i.age
+            d['expired'] = i.expired
+            d["active"] = i.active
+            detail.append(d)
+
+        print(detail)
+
+        return render(request,'show_bank_details.html',{"data": detail} )
 
 
 
