@@ -184,25 +184,45 @@ def get_student_status(request):
         print(dta)
 
         return render(request, 'show_student_data.html', {"data": dta} )
+#
+# def get_bank_details(request):
+#     if request.method == 'GET':
+#         data = BankDetails.objects.all()
+#         detail = []
+#         for i in data:
+#             d = {}
+#             d['id'] = i.id
+#             d['name'] = i.name
+#             d['age'] = i.age
+#             d['expired'] = i.expired
+#             d["active"] = i.active
+#             detail.append(d)
+#
+#         print(detail)
+#
+#         return render(request,'show_bank_details.html',{"data": detail} )
 
-def get_bank_details(request):
+
+def get_item_inventory(request):
     if request.method == 'GET':
-        data = BankDetails.objects.all()
-        detail = []
+        data = ItemInventory.objects.all()
+        inventory = []
         for i in data:
             d = {}
             d['id'] = i.id
-            d['name'] = i.name
-            d['age'] = i.age
-            d['expired'] = i.expired
-            d["active"] = i.active
-            detail.append(d)
+            d['item_name'] = i.Item_Name
+            d['piece_created'] = i. Piece_Created
+            d['piece_sold'] = i. Piece_Sold
+            inventory.append(d)
 
-        print(detail)
-
-        return render(request,'show_bank_details.html',{"data": detail} )
+        print(inventory)
+        return render(request,'show_inventory_item.html',{"data":inventory})
 
 
 
+def del_bank_details(request):
+        if request.method == 'GET':
+            data = BankDetails.objects.get(id=1)
+            data.delete()
 
 

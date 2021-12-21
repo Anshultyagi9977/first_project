@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homepage</title>
+</head>
+<body>
+
+    <h1> inventory item is </h1>
+    {% for d in data %}
+        <table>
+            <th>{{d.item_name}}</th>
+          <tr>
+            <td>{{d.id}}</td>
+              <br/>
+            <td>{{d.piece_created}}</td>
+              <br>
+            <td>{{d.piece_sold}}</td>
+
+          </tr>
+        </table>
+    {% endfor %}
+
+</body>
+</html>
